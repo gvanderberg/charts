@@ -3,7 +3,8 @@ image:
   repository: outbox.azurecr.io/identitysrv.web
   tag: stable
   pullPolicy: IfNotPresent
-  pullSecret: outbox-registry
+  pullSecrets: 
+    - outbox-registry
 
 replicaCount: 1
 
