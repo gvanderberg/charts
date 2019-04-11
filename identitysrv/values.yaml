@@ -6,6 +6,12 @@ image:
   pullSecret: 
     - outbox-registry
 
+imageCredentials:
+  name: example-registry
+  registry: example.azurecr.io
+  username: example
+  password: example
+
 replicaCount: 1
 
 ingress:
