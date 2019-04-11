@@ -1,14 +1,14 @@
 apiVersion: v1
 appVersion: "1.0"
 description: A IdentityServer4 based OAuth / OpenId Connect server
-home: https://www.outsurance.co.za
-icon: https://www.outsurance.co.za/favicon.ico
+home: https://www.kloudbox.co.za
+icon: https://www.kloudbox.co.za/favicon.ico
 keywords:
 - identityserver4
 - oauth
 - oidc
 maintainers:
-- email: vanderbergg@out.co.za
+- email: gareth.shaun@gmail.com
   name: gvanderberg
 name: identitysrv
-version: 0.1.1
+version: 0.1.2
