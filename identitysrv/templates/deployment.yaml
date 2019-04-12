@@ -25,8 +25,12 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+            - name: IsClusterEnv
+              value: true
             - name: OrchestratorType
               value: K8S
+            - name: ConnectionString__IdentityDatabase
+              value: Server=tcp:sql.data;Initial Catalog=IdentityDb;Persist Security Info=False;Connection Timeout=30;
           ports:
             - name: http
               containerPort: 80
