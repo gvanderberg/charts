@@ -4,11 +4,11 @@ image:
   tag: stable
   pullPolicy: IfNotPresent
   pullSecret: 
-    - outbox-registry
+    - example-registry
 
 imageCredentials:
   name: example-registry
-  registry: example.azurecr.io
+  registry: registry.example.com
   username: example
   password: example
 

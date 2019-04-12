@@ -26,7 +26,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: ASPNETCORE_ENVIRONMENT
-              value: Staging
+              value: Development
             - name: IsClusterEnv
               value: true
             - name: OrchestratorType
@@ -48,6 +48,21 @@ spec:
                 configMapKeyRef:
                   name: {{ template "identitysrv.fullname" . }}-config
                   key: SerilogUrl
+            - name: LeadsApiUrl
+              valueFrom: 
+                configMapKeyRef:
+                  name: {{ template "identitysrv.fullname" . }}-config
+                  key: LeadsApiUrl
+            - name: SchedulerApiUrl
+              valueFrom: 
+                configMapKeyRef:
+                  name: {{ template "identitysrv.fullname" . }}-config
+                  key: SchedulerApiUrl
+            - name: SchedulerWebUrl
+              valueFrom: 
+                configMapKeyRef:
+                  name: {{ template "identitysrv.fullname" . }}-config
+                  key: SchedulerWebUrl
           ports:
             - name: http
               containerPort: 80
