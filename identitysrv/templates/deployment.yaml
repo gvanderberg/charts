@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "identitysrv.fullname" . }}
@@ -24,45 +24,6 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: ASPNETCORE_ENVIRONMENT
-              value: Development
-            - name: IsClusterEnv
-              value: true
-            - name: OrchestratorType
-              value: K8S
-            - name: PATH_BASE
-              value: /
-            - name: ApplicationInsights__InstrumentationKey
-              valueFrom: 
-                configMapKeyRef:
-                  name: {{ template "identitysrv.fullname" . }}-config
-                  key: InstrumentationKey
-            - name: ConnectionStrings__IdentityDatabase
-              valueFrom: 
-                configMapKeyRef:
-                  name: {{ template "identitysrv.fullname" . }}-config
-                  key: ConnectionString
-            - name: Serilog__WriteTo__1__Args__serverUrl
-              valueFrom: 
-                configMapKeyRef:
-                  name: {{ template "identitysrv.fullname" . }}-config
-                  key: SerilogServerUrl
-            - name: LeadsApiUrl
-              valueFrom: 
-                configMapKeyRef:
-                  name: {{ template "identitysrv.fullname" . }}-config
-                  key: LeadsApiUrl
-            - name: SchedulerApiUrl
-              valueFrom: 
-                configMapKeyRef:
-                  name: {{ template "identitysrv.fullname" . }}-config
-                  key: SchedulerApiUrl
-            - name: SchedulerWebUrl
-              valueFrom: 
-                configMapKeyRef:
-                  name: {{ template "identitysrv.fullname" . }}-config
-                  key: SchedulerWebUrl
           ports:
             - name: http
               containerPort: 80

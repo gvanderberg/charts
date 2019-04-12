@@ -8,10 +8,10 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 data:
-  ASPNETCORE_ENVIRONMENT: Development
-  InstrumentationKey: b0e7c6be-5072-4830-afa9-e7a87839a13a
-  ConnectionString: Server=tcp:sql.data;Initial Catalog=IdentityDb;Persist Security Info=False;User ID=sa;Password=P@ssword;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+  Environment: {{ .Values.appSettings.environment | quote }}
+  InstrumentationKey: {{ .Values.appSettings.instrumentationKey | quote }}
+  ConnectionString: {{ .Values.appSettings.connectionString | quote }}
   LeadsApiUrl: http://localhost:4001
   SchedulerApiUrl: http://localhost:4001
   SchedulerWebUrl: http://localhost:4002
-  SerilogServerUrl: http://seq.monitoring
+  SerilogServerUrl: {{ .Values.appSettings.serilogServerUrl | quote }}
