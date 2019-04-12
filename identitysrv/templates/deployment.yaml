@@ -35,6 +35,11 @@ spec:
                 configMapKeyRef:
                   name: {{ template "identitysrv.fullname" . }}-config
                   key: instrumentationKey
+            - name: Serilog__WriteTo__1__Args__serverUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "identitysrv.fullname" . }}-config
+                  key: serilogServerUrl
             - name: OrchestratorType
               value: K8S
           ports:
@@ -43,11 +48,11 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /health/live
               port: http
           readinessProbe:
             httpGet:
-              path: /
+              path: /health/ready
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
