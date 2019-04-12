@@ -35,6 +35,11 @@ spec:
                 configMapKeyRef:
                   name: {{ template "identitysrv.fullname" . }}-config
                   key: instrumentationKey
+            - name: ConnectionStrings__IdentityDatabase
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "identitysrv.fullname" . }}-config
+                  key: connectionString
             - name: Serilog__WriteTo__1__Args__serverUrl
               valueFrom:
                 configMapKeyRef:
