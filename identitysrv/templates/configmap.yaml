@@ -8,10 +8,10 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 data:
-  Environment: {{ .Values.appSettings.environment | quote }}
-  InstrumentationKey: {{ .Values.appSettings.instrumentationKey | quote }}
-  ConnectionString: {{ .Values.appSettings.connectionString | quote }}
-  LeadsApiUrl: http://localhost:4001
-  SchedulerApiUrl: http://localhost:4001
-  SchedulerWebUrl: http://localhost:4002
-  SerilogServerUrl: {{ .Values.appSettings.serilogServerUrl | quote }}
+  environmentName: {{ .Values.appSettings.environmentName | quote }}
+  instrumentationKey: {{ .Values.appSettings.instrumentationKey | quote }}
+  connectionString: {{ .Values.appSettings.connectionString | quote }}
+  leadsApiUrl: http://localhost:4001
+  schedulerApiUrl: http://localhost:4001
+  schedulerWebUrl: http://localhost:4002
+  serilogServerUrl: {{ .Values.appSettings.serilogServerUrl | quote }}
