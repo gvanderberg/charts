@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: {{ include "identitysrv.fullname" . }}
@@ -47,7 +47,7 @@ spec:
               valueFrom: 
                 configMapKeyRef:
                   name: {{ template "identitysrv.fullname" . }}-config
-                  key: SerilogUrl
+                  key: SerilogServerUrl
             - name: LeadsApiUrl
               valueFrom: 
                 configMapKeyRef:
