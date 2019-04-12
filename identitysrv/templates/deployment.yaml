@@ -30,6 +30,11 @@ spec:
                 configMapKeyRef:
                   name: {{ template "identitysrv.fullname" . }}-config
                   key: environmentName
+            - name: ApplicationInsights__InstrumentationKey
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "identitysrv.fullname" . }}-config
+                  key: instrumentationKey
             - name: OrchestratorType
               value: K8S
           ports:
