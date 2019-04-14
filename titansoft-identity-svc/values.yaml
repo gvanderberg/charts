@@ -2,15 +2,23 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
-
 image:
-  repository: nginx
+  repository: titansoft.azurecr.io/titansoft.identity.svc
   tag: stable
   pullPolicy: IfNotPresent
+  pullSecret: 
+    - titansoft-registry
+
+imageCredentials:
+  name: titansoft-registry
+  registry: titansoft.azurecr.io
+  username: example
+  password: example
 
 nameOverride: ""
 fullnameOverride: ""
+
+replicaCount: 1
 
 service:
   type: ClusterIP
