@@ -45,8 +45,10 @@ spec:
                 configMapKeyRef:
                   name: {{ template "identitysrv.fullname" . }}-config
                   key: serilogServerUrl
+            - name: IsClusterEnv
+              value: "True"
             - name: OrchestratorType
-              value: K8S
+              value: "K8S"
           ports:
             - name: http
               containerPort: 80
