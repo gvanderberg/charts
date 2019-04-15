@@ -1,0 +1,15 @@
+apiVersion: v1
+appVersion: "1.0"
+description: A leads generation api for affiliates
+home: https://www.outsurance.co.za
+icon: https://www.outsurance.co.za/outsurance_logo.png
+keywords:
+- outsurance
+- affiliates
+- leads
+- insurance
+maintainers:
+- email: vanderbergg@out.co.za
+  name: vanderbergg
+name: leads-api
+version: 0.1.0
