@@ -1,20 +1,31 @@
-# Default values for affiliateleads.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-replicaCount: 1
-
+# Default values for affiliate leads.
 image:
-  repository: outitdev.azurecr.io/affiliateleads
+  repository: outbox.azurecr.io/leads.api
   tag: stable
   pullPolicy: IfNotPresent
+  pullSecret: 
+    - outbox-registry
+
+imageCredentials:
+  name: outbox-registry
+  registry: outbox.azurecr.io
+  username: example
+  password: example
+
+replicaCount: 1
 
 nameOverride: ""
 fullnameOverride: ""
 
-service:
-  type: ClusterIP
-  port: 80
+configMap:
+  environmentName: Development
+  instrumentationKey: 00000000-0000-0000-0000-000000000000
+  identityUrl: http://identity
+  identityUrlHC: http://identity/health/ready
+  leadServiceUrl: http://leads
+  leadServiceUrlHC: http://leads/health/ready
+  pathBase: /
+  serilogServerUrl: http://seq
 
 ingress:
   enabled: false
@@ -23,11 +34,15 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   paths: []
   hosts:
-    - chart-example.local
+    - auth.example.com
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
-  #      - chart-example.local
+  #      - auth.example.com
+
+service:
+  type: ClusterIP
+  port: 80
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

@@ -1,39 +1,75 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "affiliateleads.fullname" . }}
+  name: {{ include "leads-api.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "affiliateleads.name" . }}
-    helm.sh/chart: {{ include "affiliateleads.chart" . }}
+    app.kubernetes.io/name: {{ include "leads-api.name" . }}
+    helm.sh/chart: {{ include "leads-api.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "affiliateleads.name" . }}
+      app.kubernetes.io/name: {{ include "leads-api.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "affiliateleads.name" . }}
+        app.kubernetes.io/name: {{ include "leads-api.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+{{- include "leads-api.imagePullSecrets" . | indent 6 }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "leads-api.fullname" . }}-config
+                  key: environmentName
+            - name: PATH_BASE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "leads-api.fullname" . }}-config
+                  key: pathBase
+            - name: ApplicationInsights__InstrumentationKey
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "leads-api.fullname" . }}-config
+                  key: instrumentationKey
+            - name: IdentityUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "leads-api.fullname" . }}-config
+                  key: identityUrl
+            - name: IdentityUrlHC
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "leads-api.fullname" . }}-config
+                  key: identityUrlHC
+            - name: Serilog__WriteTo__1__Args__serverUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "leads-api.fullname" . }}-config
+                  key: serilogServerUrl
+            - name: IsClusterEnv
+              value: "True"
+            - name: OrchestratorType
+              value: "K8S"
           ports:
             - name: http
               containerPort: 80
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /health/live
               port: http
           readinessProbe:
             httpGet:
-              path: /
+              path: /health/ready
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
