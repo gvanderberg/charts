@@ -30,6 +30,11 @@ spec:
                 configMapKeyRef:
                   name: {{ template "identitysrv.fullname" . }}-config
                   key: environmentName
+            - name: PATH_BASE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "identitysrv.fullname" . }}-config
+                  key: pathBase
             - name: ApplicationInsights__InstrumentationKey
               valueFrom:
                 configMapKeyRef:
