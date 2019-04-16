@@ -11,7 +11,5 @@ data:
   environmentName: {{ .Values.configMap.environmentName | quote }}
   instrumentationKey: {{ .Values.configMap.instrumentationKey | quote }}
   connectionString: {{ .Values.configMap.connectionString | quote }}
-  leadsApiUrl: http://localhost:4001
-  schedulerApiUrl: http://localhost:4001
-  schedulerWebUrl: http://localhost:4002
-  serilogServerUrl: {{ .Values.configMap.serilogServerUrl | quote }}
+  pathBase: {{ .Values.configMap.pathBase | quote }}
+  seqServerUrl: {{ .Values.configMap.seqServerUrl | quote }}

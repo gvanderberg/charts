@@ -19,21 +19,57 @@ spec:
         app.kubernetes.io/name: {{ include "titansoft-identity-web.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+{{- include "titansoft-identity-web.imagePullSecrets" . | indent 6 }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-identity-web.fullname" . }}-config
+                  key: environmentName
+            - name: PATH_BASE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-identity-web.fullname" . }}-config
+                  key: pathBase
+            - name: ApplicationInsights__InstrumentationKey
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-identity-web.fullname" . }}-config
+                  key: instrumentationKey
+            - name: ConnectionStrings__IdentityDatabase
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-identity-web.fullname" . }}-config
+                  key: connectionString
+            - name: Serilog__WriteTo__1__Args__serverUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-identity-svc.fullname" . }}-config
+                  key: seqServerUrl
+            - name: Serilog__Properties__Environment
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-identity-svc.fullname" . }}-config
+                  key: environmentName
+            - name: IsClusterEnv
+              value: "True"
+            - name: OrchestratorType
+              value: "K8S"
           ports:
             - name: http
               containerPort: 80
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /health/live
               port: http
           readinessProbe:
             httpGet:
-              path: /
+              path: /health/ready
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
