@@ -48,12 +48,12 @@ spec:
             - name: Serilog__WriteTo__1__Args__serverUrl
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-identity-svc.fullname" . }}-config
+                  name: {{ template "titansoft-identity-web.fullname" . }}-config
                   key: seqServerUrl
             - name: Serilog__Properties__Environment
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-identity-svc.fullname" . }}-config
+                  name: {{ template "titansoft-identity-web.fullname" . }}-config
                   key: environmentName
             - name: IsClusterEnv
               value: "True"
