@@ -35,6 +35,11 @@ spec:
                 configMapKeyRef:
                   name: {{ template "identitysrv.fullname" . }}-config
                   key: pathBase
+            - name: LeadsApiUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "identitysrv.fullname" . }}-config
+                  key: leadsApiUrl
             - name: ApplicationInsights__InstrumentationKey
               valueFrom:
                 configMapKeyRef:

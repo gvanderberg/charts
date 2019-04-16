@@ -2,7 +2,7 @@
 image:
   repository: outbox.azurecr.io/leads.api
   tag: stable
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   pullSecret: 
     - outbox-registry
 
@@ -24,7 +24,7 @@ configMap:
   identityUrlHC: http://identity/health/ready
   leadServiceUrl: http://leads
   leadServiceUrlHC: http://leads/health/ready
-  pathBase: /
+  pathBase: 
   serilogServerUrl: http://seq
 
 ingress:
