@@ -35,7 +35,7 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-xero-api.fullname" . }}-config
                   key: pathBase
-            - name: DPConnectionString
+            - name: ConnectionString
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "titansoft-xero-api.fullname" . }}-config
