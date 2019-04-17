@@ -9,6 +9,6 @@ keywords:
 - accounting
 maintainers:
 - email: gvanderberg@titansoftware.co.za
-  name: gvanderberg
+  name: Gareth van der Berg
 name: titansoft-xero-api
-version: 0.1.0
+version: 0.1.1

@@ -4,13 +4,13 @@
 
 image:
   repository: titansoft.azurecr.io/titansoft.xero.api
-  tag: stable
-  pullPolicy: IfNotPresent
+  tag: latest
+  pullPolicy: Always
   pullSecret: 
-    - titansoft-registry
+    - titansoft-xero-api-registry
 
 imageCredentials:
-  name: titansoft-registry
+  name: titansoft-xero-api-registry
   registry: titansoft.azurecr.io
   username: example
   password: example
@@ -24,7 +24,16 @@ configMap:
   environmentName: Development
   instrumentationKey: 00000000-0000-0000-0000-000000000000
   connectionString: Server=tcp:sql.data;Initial Catalog=IdentityDb;Persist Security Info=False;Connection Timeout=30;
-  serilogServerUrl: 
+  cacheConnection: redis
+  eventBusConnection: rabbitmq
+  identityUrl: http://identity
+  identityUrlHC: http://identity/health/ready
+  pathBase: 
+  seqServerUrl: http://seq
+  xeroAppType: 
+  xeroCallbackUrl: 
+  xeroConsumerKey: 
+  xeroConsumerSecret: 
 
 service:
   type: ClusterIP
