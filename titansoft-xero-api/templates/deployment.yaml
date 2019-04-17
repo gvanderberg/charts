@@ -45,6 +45,11 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-xero-api.fullname" . }}-config
                   key: eventBusConnection
+            - name: EventBusPassword
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xero-api.fullname" . }}-config
+                  key: eventBusPassword
             - name: IdentityUrl
               valueFrom:
                 configMapKeyRef:
