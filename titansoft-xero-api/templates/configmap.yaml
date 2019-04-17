@@ -13,6 +13,8 @@ data:
   connectionString: {{ .Values.configMap.connectionString | quote }}
   cacheConnection: {{ .Values.configMap.cacheConnection | quote }}
   eventBusConnection: {{ .Values.configMap.eventBusConnection | quote }}
+  eventBusUserName: {{ .Values.configMap.eventBusUserName | quote }}
+  eventBusPassword: {{ .Values.configMap.eventBusPassword | quote }}
   identityUrl: {{ .Values.configMap.identityUrl | quote }}
   identityUrlHC: {{ .Values.configMap.identityUrlHC | quote }}
   pathBase: {{ .Values.configMap.pathBase | quote }}
