@@ -7,10 +7,10 @@ image:
   tag: latest
   pullPolicy: Always
   pullSecret: 
-    - titansoft-registry
+    - titansoft-identity-web-registry
 
 imageCredentials:
-  name: titansoft-registry
+  name: titansoft-identity-web-registry
   registry: titansoft.azurecr.io
   username: example
   password: example
