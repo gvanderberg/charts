@@ -35,6 +35,11 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-identity-web.fullname" . }}-config
                   key: pathBase
+            - name: CacheConnectionString
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-identity-web.fullname" . }}-config
+                  key: cacheConnectionString
             - name: ApplicationInsights__InstrumentationKey
               valueFrom:
                 configMapKeyRef:
