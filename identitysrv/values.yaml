@@ -4,10 +4,10 @@ image:
   tag: stable
   pullPolicy: Always
   pullSecret: 
-    - outbox-registry
+    - identitysrv-web-registry
 
 imageCredentials:
-  name: outbox-registry
+  name: identitysrv-web-registry
   registry: outbox.azurecr.io
   username: example
   password: example
@@ -18,9 +18,13 @@ configMap:
   environmentName: Development
   instrumentationKey: 00000000-0000-0000-0000-000000000000
   connectionString: Server=tcp:sql.data;Initial Catalog=IdentityDb;Persist Security Info=False;Connection Timeout=30;
+  cacheConnection: redis
+  eventBusConnection: rabbitmq
+  eventBusUserName: 
+  eventBusPassword: 
   leadsApiUrl:
   pathBase: 
-  serilogServerUrl: 
+  seqServerUrl: 
 
 ingress:
   enabled: false

@@ -35,6 +35,26 @@ spec:
                 configMapKeyRef:
                   name: {{ template "identitysrv.fullname" . }}-config
                   key: pathBase
+            - name: ConnectionString
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "identitysrv.fullname" . }}-config
+                  key: cacheConnection
+            - name: EventBusConnection
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "identitysrv.fullname" . }}-config
+                  key: eventBusConnection
+            - name: EventBusUserName
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "identitysrv.fullname" . }}-config
+                  key: eventBusUserName
+            - name: EventBusPassword
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "identitysrv.fullname" . }}-config
+                  key: eventBusPassword
             - name: LeadsApiUrl
               valueFrom:
                 configMapKeyRef:
