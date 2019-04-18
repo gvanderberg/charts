@@ -21,7 +21,8 @@ fullnameOverride: ""
 replicaCount: 1
 
 configMap:
-  connectionString: 
+  cacheConnection: 
+  cachePassword: 
   environmentName: Development
   identityDatabase: Server=tcp:sql.data;Initial Catalog=IdentityDb;Persist Security Info=False;Connection Timeout=30;
   instrumentationKey: 00000000-0000-0000-0000-000000000000
