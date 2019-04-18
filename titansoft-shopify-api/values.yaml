@@ -4,8 +4,8 @@
 
 image:
   repository: titansoft.azurecr.io/titansoft.shopify.api
-  tag: stable
-  pullPolicy: IfNotPresent
+  tag: latest
+  pullPolicy: Always
   pullSecret: 
     - titansoft-shopify-api-registry
 
