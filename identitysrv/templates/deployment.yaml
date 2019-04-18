@@ -74,7 +74,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "identity-srv.fullname" . }}-config
-                  key: serilogServerUrl
+                  key: seqServerUrl
             - name: IsClusterEnv
               value: "True"
             - name: OrchestratorType
