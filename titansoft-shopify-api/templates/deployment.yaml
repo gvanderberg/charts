@@ -19,21 +19,87 @@ spec:
         app.kubernetes.io/name: {{ include "titansoft-shopify-api.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+{{- include "titansoft-shopify-api.imagePullSecrets" . | indent 6 }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: environmentName
+            - name: PATH_BASE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: pathBase
+            - name: ConnectionString
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: cacheConnection
+            - name: EventBusConnection
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: eventBusConnection
+            - name: EventBusUserName
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: eventBusUserName
+            - name: EventBusPassword
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: eventBusPassword
+            - name: IdentityUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: identityUrl
+            - name: IdentityUrlHC
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: identityUrlHC
+            - name: ApplicationInsights__InstrumentationKey
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: instrumentationKey
+            - name: ConnectionStrings__DefaultConnection
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: connectionString
+            - name: Serilog__WriteTo__2__Args__serverUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: seqServerUrl
+            - name: Serilog__Properties__Environment
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: environmentName
+            - name: IsClusterEnv
+              value: "True"
+            - name: OrchestratorType
+              value: "K8S"
           ports:
             - name: http
               containerPort: 80
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /health/live
               port: http
           readinessProbe:
             httpGet:
-              path: /
+              path: /health/ready
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

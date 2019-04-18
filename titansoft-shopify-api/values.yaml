@@ -7,10 +7,10 @@ image:
   tag: stable
   pullPolicy: IfNotPresent
   pullSecret: 
-    - titansoft-registry
+    - titansoft-shopify-api-registry
 
 imageCredentials:
-  name: titansoft-registry
+  name: titansoft-shopify-api-registry
   registry: titansoft.azurecr.io
   username: example
   password: example
@@ -24,7 +24,16 @@ configMap:
   environmentName: Development
   instrumentationKey: 00000000-0000-0000-0000-000000000000
   connectionString: Server=tcp:sql.data;Initial Catalog=IdentityDb;Persist Security Info=False;Connection Timeout=30;
-  serilogServerUrl: 
+  cacheConnection: redis
+  eventBusConnection: rabbitmq
+  eventBusUserName: 
+  eventBusPassword: 
+  identityUrl: http://identity
+  identityUrlHC: http://identity/health/ready
+  pathBase: 
+  seqServerUrl: http://seq
+  shopifyClientId: 
+  shopifyClientSecret: 
 
 service:
   type: ClusterIP
