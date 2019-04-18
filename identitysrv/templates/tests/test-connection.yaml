@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "identitysrv.fullname" . }}-test-connection"
+  name: "{{ include "identity-srv.fullname" . }}-test-connection"
   labels:
-    app.kubernetes.io/name: {{ include "identitysrv.name" . }}
-    helm.sh/chart: {{ include "identitysrv.chart" . }}
+    app.kubernetes.io/name: {{ include "identity-srv.name" . }}
+    helm.sh/chart: {{ include "identity-srv.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
   annotations:
@@ -14,5 +14,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args:  ['{{ include "identitysrv.fullname" . }}:{{ .Values.service.port }}']
+      args:  ['{{ include "identity-srv.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never

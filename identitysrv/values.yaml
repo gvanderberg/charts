@@ -4,10 +4,10 @@ image:
   tag: stable
   pullPolicy: Always
   pullSecret: 
-    - identitysrv-web-registry
+    - identity-srv-registry
 
 imageCredentials:
-  name: identitysrv-web-registry
+  name: identity-srv-registry
   registry: outbox.azurecr.io
   username: example
   password: example

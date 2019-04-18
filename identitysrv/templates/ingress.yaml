@@ -1,13 +1,13 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "identitysrv.fullname" . -}}
+{{- $fullName := include "identity-srv.fullname" . -}}
 {{- $ingressPaths := .Values.ingress.paths -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    app.kubernetes.io/name: {{ include "identitysrv.name" . }}
-    helm.sh/chart: {{ include "identitysrv.chart" . }}
+    app.kubernetes.io/name: {{ include "identity-srv.name" . }}
+    helm.sh/chart: {{ include "identity-srv.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
   {{- with .Values.ingress.annotations }}
