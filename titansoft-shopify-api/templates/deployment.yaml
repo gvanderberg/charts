@@ -35,11 +35,16 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-shopify-api.fullname" . }}-config
                   key: pathBase
-            - name: ConnectionString
+            - name: CacheConnection
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "titansoft-shopify-api.fullname" . }}-config
                   key: cacheConnection
+            - name: CachePassword
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: cachePassword
             - name: EventBusConnection
               valueFrom:
                 configMapKeyRef:
@@ -70,11 +75,11 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-shopify-api.fullname" . }}-config
                   key: instrumentationKey
-            - name: ConnectionStrings__DefaultConnection
+            - name: ConnectionStrings__ShopifyDatabase
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "titansoft-shopify-api.fullname" . }}-config
-                  key: connectionString
+                  key: shopifyDatabase
             - name: Serilog__WriteTo__2__Args__serverUrl
               valueFrom:
                 configMapKeyRef:
@@ -85,6 +90,16 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-shopify-api.fullname" . }}-config
                   key: environmentName
+            - name: ShopifyApi__ConsumerKey
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: shopify__ConsumerKey
+            - name: ShopifyApi__ConsumerSecret
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: shopify__ConsumerSecret
             - name: IsClusterEnv
               value: "True"
             - name: OrchestratorType

@@ -21,19 +21,20 @@ fullnameOverride: ""
 replicaCount: 1
 
 configMap:
+  cacheConnection: 
+  cachePassword: 
   environmentName: Development
   instrumentationKey: 00000000-0000-0000-0000-000000000000
-  connectionString: Server=tcp:sql.data;Initial Catalog=IdentityDb;Persist Security Info=False;Connection Timeout=30;
-  cacheConnection: redis
-  eventBusConnection: rabbitmq
+  eventBusConnection: 
   eventBusUserName: 
   eventBusPassword: 
-  identityUrl: http://identity
-  identityUrlHC: http://identity/health/ready
+  identityUrl: 
+  identityUrlHC: 
   pathBase: 
-  seqServerUrl: http://seq
-  shopifyClientId: 
-  shopifyClientSecret: 
+  seqServerUrl: 
+  shopify__ConsumerKey: 
+  shopify__ConsumerSecret: 
+  shopifyDatabase: Server=tcp:sql.data;Initial Catalog=IdentityDb;Persist Security Info=False;Connection Timeout=30;
 
 service:
   type: ClusterIP
