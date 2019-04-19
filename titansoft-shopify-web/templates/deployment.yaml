@@ -28,92 +28,92 @@ spec:
             - name: ASPNETCORE_ENVIRONMENT
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: environmentName
             - name: PATH_BASE
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: pathBase
             - name: CacheConnection
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: cacheConnection
             - name: CachePassword
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: cachePassword
             - name: CallBackUrl
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: callBackUrl
             - name: IdentityUrl
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: identityUrl
             - name: IdentityUrlHC
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: identityUrlHC
             - name: ShopifyUrl
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: shopifyUrl
             - name: ShopifyUrlHC
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: shopifyUrlHC
             - name: XeroUrl
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: xeroUrl
             - name: XeroUrlHC
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: xeroUrlHC
             - name: ApplicationInsights__InstrumentationKey
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: instrumentationKey
             - name: Serilog__WriteTo__2__Args__serverUrl
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: seqServerUrl
             - name: Serilog__Properties__Environment
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: environmentName
             - name: ShopifyApi__ConsumerKey
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: shopifyApi__ConsumerKey
             - name: ShopifyApi__ConsumerSecret
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: shopifyApi__ConsumerSecret
             - name: XeroApi__ConsumerKey
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: xeroApi__ConsumerKey
             - name: XeroApi__ConsumerSecret
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: xeroApi__ConsumerSecret
             - name: IsClusterEnv
               value: "True"
