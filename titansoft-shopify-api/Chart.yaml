@@ -2,7 +2,7 @@ apiVersion: v1
 appVersion: "1.0"
 description: A Shopify commerce integration api
 home: https://www.titansoftware.co.za
-icon: http://xero-app.kloudbox.co.za/assets/shopify-partner-logo/shopify-partner.jpg
+icon: http://xero-app.kloudbox.co.za/assets/images/shopify-partner.jpg
 keywords:
 - titan software
 - shopify
@@ -11,4 +11,4 @@ maintainers:
 - email: gvanderberg@titansoftware.co.za
   name: Gareth van der Berg
 name: titansoft-shopify-api
-version: 0.1.5
+version: 0.1.6
