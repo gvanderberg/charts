@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "titansoft-shopify-web.fullname" . }}-config
+  labels:
+    app: {{ template "titansoft-shopify-web.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  cacheConnection: {{ .Values.configMap.cacheConnection | quote }}
+  cachePassword: {{ .Values.configMap.cachePassword | quote }}
+  callBackUrl: {{ .Values.configMap.callBackUrl | quote }}
+  environmentName: {{ .Values.configMap.environmentName | quote }}
+  identityUrl: {{ .Values.configMap.identityUrl | quote }}
+  identityUrlHC: {{ .Values.configMap.identityUrlHC | quote }}
+  instrumentationKey: {{ .Values.configMap.instrumentationKey | quote }}
+  pathBase: {{ .Values.configMap.pathBase | quote }}
+  seqServerUrl: {{ .Values.configMap.seqServerUrl | quote }}
+  shopifyApi__ConsumerKey: {{ .Values.configMap.shopifyApi__ConsumerKey | quote }}
+  shopifyApi__ConsumerSecret: {{ .Values.configMap.shopifyApi__ConsumerSecret | quote }}
+  shopifyUrl: {{ .Values.configMap.shopifyUrl | quote }}
+  shopifyUrlHC: {{ .Values.configMap.shopifyUrlHC | quote }}
+  xeroApi__ConsumerKey: {{ .Values.configMap.xeroApi__ConsumerKey | quote }}
+  xeroApi__ConsumerSecret: {{ .Values.configMap.xeroApi__ConsumerSecret | quote }}
+  xeroUrl: {{ .Values.configMap.xeroUrl | quote }}
+  xeroUrlHC: {{ .Values.configMap.xeroUrlHC | quote }}
