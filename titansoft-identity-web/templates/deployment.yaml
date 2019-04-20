@@ -55,7 +55,17 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-identity-web.fullname" . }}-config
                   key: identityDatabase
-            - name: Serilog__WriteTo__1__Args__serverUrl
+            - name: Sentry__Dsn
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-identity-web.fullname" . }}-config
+                  key: sentryDsn
+            - name: Serilog__WriteTo__1__Args__dsn
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-identity-web.fullname" . }}-config
+                  key: sentryDsn
+            - name: Serilog__WriteTo__2__Args__serverUrl
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "titansoft-identity-web.fullname" . }}-config

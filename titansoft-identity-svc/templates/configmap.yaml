@@ -9,10 +9,11 @@ metadata:
     heritage: {{ .Release.Service }}
 data:
   environmentName: {{ .Values.configMap.environmentName | quote }}
+  identityDatabase: {{ .Values.configMap.identityDatabase | quote }}
   instrumentationKey: {{ .Values.configMap.instrumentationKey | quote }}
-  connectionString: {{ .Values.configMap.connectionString | quote }}
+  pathBase: {{ .Values.configMap.pathBase | quote }}
+  sentryDsn: {{ .Values.configMap.sentryDsn | quote }}
+  seqServerUrl: {{ .Values.configMap.seqServerUrl | quote }}
   shopifyApiUrl: {{ .Values.configMap.shopifyApiUrl | quote }}
   shopifyWebUrl: {{ .Values.configMap.shopifyWebUrl | quote }}
   xeroApiUrl: {{ .Values.configMap.xeroApiUrl | quote }}
-  pathBase: {{ .Values.configMap.pathBase | quote }}
-  seqServerUrl: {{ .Values.configMap.seqServerUrl | quote }}
