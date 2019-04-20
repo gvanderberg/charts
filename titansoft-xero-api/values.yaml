@@ -24,13 +24,14 @@ configMap:
   cacheConnection: 
   cachePassword: 
   environmentName: Development
+  eventBusConnection: 
+  eventBusPassword: 
+  eventBusUserName: 
   identityUrl: 
   identityUrlHC: 
   instrumentationKey: 00000000-0000-0000-0000-000000000000
-  eventBusConnection: 
-  eventBusUserName: 
-  eventBusPassword: 
   pathBase: 
+  sentryDsn: 
   seqServerUrl: 
   xeroApi__AppType: Public
   xeroApi__CallbackUrl: 
