@@ -8,18 +8,21 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 data:
-  environmentName: {{ .Values.configMap.environmentName | quote }}
-  instrumentationKey: {{ .Values.configMap.instrumentationKey | quote }}
-  connectionString: {{ .Values.configMap.connectionString | quote }}
   cacheConnection: {{ .Values.configMap.cacheConnection | quote }}
+  cachePassword: {{ .Values.configMap.cachePassword | quote }}
+  environmentName: {{ .Values.configMap.environmentName | quote }}
   eventBusConnection: {{ .Values.configMap.eventBusConnection | quote }}
-  eventBusUserName: {{ .Values.configMap.eventBusUserName | quote }}
   eventBusPassword: {{ .Values.configMap.eventBusPassword | quote }}
+  eventBusUserName: {{ .Values.configMap.eventBusUserName | quote }}
   identityUrl: {{ .Values.configMap.identityUrl | quote }}
   identityUrlHC: {{ .Values.configMap.identityUrlHC | quote }}
+  instrumentationKey: {{ .Values.configMap.instrumentationKey | quote }}
   pathBase: {{ .Values.configMap.pathBase | quote }}
+  sentryDsn: {{ .Values.configMap.sentryDsn | quote }}
   seqServerUrl: {{ .Values.configMap.seqServerUrl | quote }}
-  xeroAppType: {{ .Values.configMap.xeroAppType | quote }}
-  xeroCallbackUrl: {{ .Values.configMap.xeroCallbackUrl | quote }}
-  xeroConsumerKey: {{ .Values.configMap.xeroConsumerKey | quote }}
-  xeroConsumerSecret: {{ .Values.configMap.xeroConsumerSecret | quote }}
+  xeroApi__AppType: {{ .Values.configMap.xeroApi__AppType | quote }}
+  xeroApi__CallbackUrl: {{ .Values.configMap.xeroApi__CallbackUrl | quote }}
+  xeroApi__ConsumerKey: {{ .Values.configMap.xeroApi__ConsumerKey | quote }}
+  xeroApi__ConsumerSecret: {{ .Values.configMap.xeroApi__ConsumerSecret | quote }}
+  xeroDatabase: {{ .Values.configMap.xeroDatabase | quote }}
+  

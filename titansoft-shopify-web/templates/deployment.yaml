@@ -85,6 +85,16 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: instrumentationKey
+            - name: Sentry__Dsn
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
+                  key: sentryDsn
+            - name: Serilog__WriteTo__1__Args__dsn
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
+                  key: sentryDsn
             - name: Serilog__WriteTo__2__Args__serverUrl
               valueFrom:
                 configMapKeyRef:
@@ -105,6 +115,16 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: shopifyApi__ConsumerSecret
+            - name: XeroApi__AppType
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
+                  key: xeroApi__AppType
+            - name: XeroApi__CallbackUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
+                  key: xeroApi__CallbackUrl
             - name: XeroApi__ConsumerKey
               valueFrom:
                 configMapKeyRef:

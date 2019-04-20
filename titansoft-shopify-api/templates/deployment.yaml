@@ -80,6 +80,16 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-shopify-api.fullname" . }}-config
                   key: shopifyDatabase
+            - name: Sentry__Dsn
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: sentryDsn
+            - name: Serilog__WriteTo__1__Args__dsn
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-api.fullname" . }}-config
+                  key: sentryDsn
             - name: Serilog__WriteTo__2__Args__serverUrl
               valueFrom:
                 configMapKeyRef:
@@ -94,12 +104,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "titansoft-shopify-api.fullname" . }}-config
-                  key: shopify__ConsumerKey
+                  key: shopifyApi__ConsumerKey
             - name: ShopifyApi__ConsumerSecret
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "titansoft-shopify-api.fullname" . }}-config
-                  key: shopify__ConsumerSecret
+                  key: shopifyApi__ConsumerSecret
             - name: IsClusterEnv
               value: "True"
             - name: OrchestratorType

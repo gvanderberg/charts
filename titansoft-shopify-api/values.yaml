@@ -24,16 +24,17 @@ configMap:
   cacheConnection: 
   cachePassword: 
   environmentName: Development
-  instrumentationKey: 00000000-0000-0000-0000-000000000000
   eventBusConnection: 
-  eventBusUserName: 
   eventBusPassword: 
+  eventBusUserName: 
   identityUrl: 
   identityUrlHC: 
+  instrumentationKey: 00000000-0000-0000-0000-000000000000
   pathBase: 
+  sentryDsn: 
   seqServerUrl: 
-  shopify__ConsumerKey: 
-  shopify__ConsumerSecret: 
+  shopifyApi__ConsumerKey: 
+  shopifyApi__ConsumerSecret: 
   shopifyDatabase: Server=tcp:sql.data;Initial Catalog=IdentityDb;Persist Security Info=False;Connection Timeout=30;
 
 service:

@@ -29,11 +29,14 @@ configMap:
   identityUrlHC: 
   instrumentationKey: 00000000-0000-0000-0000-000000000000
   pathBase: 
+  sentryDsn: 
   seqServerUrl: 
   shopifyApi__ConsumerKey: 
   shopifyApi__ConsumerSecret: 
   shopifyUrl: 
   shopifyUrlHC: 
+  xeroApi__AppType: 
+  xeroApi__CallbackUrl: 
   xeroApi__ConsumerKey: 
   xeroApi__ConsumerSecret: 
   xeroUrl: 

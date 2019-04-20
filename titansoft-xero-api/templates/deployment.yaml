@@ -35,11 +35,16 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-xero-api.fullname" . }}-config
                   key: pathBase
-            - name: ConnectionString
+            - name: CacheConnection
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "titansoft-xero-api.fullname" . }}-config
                   key: cacheConnection
+            - name: CachePassword
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xero-api.fullname" . }}-config
+                  key: cachePassword
             - name: EventBusConnection
               valueFrom:
                 configMapKeyRef:
@@ -70,11 +75,21 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-xero-api.fullname" . }}-config
                   key: instrumentationKey
-            - name: ConnectionStrings__DefaultConnection
+            - name: ConnectionStrings__XeroDatabase
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "titansoft-xero-api.fullname" . }}-config
-                  key: connectionString
+                  key: xeroDatabase
+            - name: Sentry__Dsn
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xero-api.fullname" . }}-config
+                  key: sentryDsn
+            - name: Serilog__WriteTo__1__Args__dsn
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xero-api.fullname" . }}-config
+                  key: sentryDsn
             - name: Serilog__WriteTo__2__Args__serverUrl
               valueFrom:
                 configMapKeyRef:
@@ -85,6 +100,26 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-xero-api.fullname" . }}-config
                   key: environmentName
+            - name: XeroApi__AppType
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xero-api.fullname" . }}-config
+                  key: xeroApi__AppType
+            - name: XeroApi__CallbackUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xero-api.fullname" . }}-config
+                  key: xeroApi__CallbackUrl
+            - name: XeroApi__ConsumerKey
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xero-api.fullname" . }}-config
+                  key: xeroApi__ConsumerKey
+            - name: XeroApi__ConsumerSecret
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xero-api.fullname" . }}-config
+                  key: xeroApi__ConsumerSecret
             - name: IsClusterEnv
               value: "True"
             - name: OrchestratorType
