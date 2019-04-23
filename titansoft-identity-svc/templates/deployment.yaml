@@ -35,6 +35,16 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-identity-svc.fullname" . }}-config
                   key: pathBase
+            - name: CacheConnection
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-identity-svc.fullname" . }}-config
+                  key: cacheConnection
+            - name: CachePassword
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-identity-svc.fullname" . }}-config
+                  key: cachePassword
             - name: ShopifyApiUrl
               valueFrom:
                 configMapKeyRef:
