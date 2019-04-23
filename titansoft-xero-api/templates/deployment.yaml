@@ -75,11 +75,11 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-xero-api.fullname" . }}-config
                   key: instrumentationKey
-            - name: ConnectionStrings__XeroDatabase
+            - name: ConnectionStrings__ShopifyDatabase
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "titansoft-xero-api.fullname" . }}-config
-                  key: xeroDatabase
+                  key: shopifyDatabase
             - name: Sentry__Dsn
               valueFrom:
                 configMapKeyRef:

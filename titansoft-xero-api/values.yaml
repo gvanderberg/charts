@@ -33,11 +33,11 @@ configMap:
   pathBase: 
   sentryDsn: 
   seqServerUrl: 
+  shopifyDatabase: Server=tcp:sql.data;Initial Catalog=IdentityDb;Persist Security Info=False;Connection Timeout=30;
   xeroApi__AppType: Public
   xeroApi__CallbackUrl: 
   xeroApi__ConsumerKey: 
   xeroApi__ConsumerSecret: 
-  xeroDatabase: Server=tcp:sql.data;Initial Catalog=IdentityDb;Persist Security Info=False;Connection Timeout=30;
 
 service:
   type: ClusterIP
