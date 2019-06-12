@@ -15,14 +15,15 @@ imageCredentials:
 replicaCount: 1
 
 configMap:
+  cacheConnection: redis
+  cachePassword: 
+  connectionString: 
   environmentName: Development
   instrumentationKey: 00000000-0000-0000-0000-000000000000
-  connectionString: Server=tcp:sql.data;Initial Catalog=IdentityDb;Persist Security Info=False;Connection Timeout=30;
-  cacheConnection: redis
   eventBusConnection: rabbitmq
   eventBusUserName: 
   eventBusPassword: 
-  leadsApiUrl:
+  leadsApiUrl: 
   pathBase: 
   seqServerUrl: 
 
