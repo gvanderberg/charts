@@ -105,6 +105,11 @@ spec:
                 configMapKeyRef:
                   name: {{ template "titansoft-shopify-web.fullname" . }}-config
                   key: environmentName
+            - name: shopifyApi__AppHost
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-shopify-web.fullname" . }}-config
+                  key: shopifyApi__AppHost
             - name: ShopifyApi__ConsumerKey
               valueFrom:
                 configMapKeyRef:

@@ -31,6 +31,7 @@ configMap:
   pathBase: 
   sentryDsn: 
   seqServerUrl: 
+  shopifyApi__AppHost: 
   shopifyApi__ConsumerKey: 
   shopifyApi__ConsumerSecret: 
   shopifyUrl: 
