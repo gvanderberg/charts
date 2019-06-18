@@ -1,0 +1,16 @@
+apiVersion: v1
+appVersion: "1.0"
+description: A Shopify and Xero web administration / integration site
+home: https://www.titansoftware.co.za
+icon: https://www.titansoftware.co.za/favicon.ico
+keywords:
+- titan software
+- shopify
+- ecommerce
+- xero
+- accounting
+maintainers:
+- email: gvanderberg@titansoftware.co.za
+  name: Gareth van der Berg
+name: titansoft-xeroapp-web
+version: 0.1.0

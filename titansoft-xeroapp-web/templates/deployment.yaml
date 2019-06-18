@@ -1,0 +1,100 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "titansoft-xeroapp-web.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "titansoft-xeroapp-web.name" . }}
+    helm.sh/chart: {{ include "titansoft-xeroapp-web.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "titansoft-xeroapp-web.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "titansoft-xeroapp-web.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+{{- include "titansoft-xeroapp-web.imagePullSecrets" . | indent 6 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xeroapp-web.fullname" . }}-config
+                  key: environmentName
+            - name: PATH_BASE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xeroapp-web.fullname" . }}-config
+                  key: pathBase
+            - name: ApplicationInsights__InstrumentationKey
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xeroapp-web.fullname" . }}-config
+                  key: instrumentationKey
+            - name: ConnectionStrings__ShopifyDatabase
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xeroapp-web.fullname" . }}-config
+                  key: shopifyDatabase
+            - name: Sentry__Dsn
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xeroapp-web.fullname" . }}-config
+                  key: sentryDsn
+            - name: Serilog__WriteTo__1__Args__dsn
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xeroapp-web.fullname" . }}-config
+                  key: sentryDsn
+            - name: Serilog__WriteTo__2__Args__serverUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xeroapp-web.fullname" . }}-config
+                  key: seqServerUrl
+            - name: Serilog__Properties__Environment
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "titansoft-xeroapp-web.fullname" . }}-config
+                  key: environmentName
+            - name: IsClusterEnv
+              value: "True"
+            - name: OrchestratorType
+              value: "K8S"
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+            - name: https
+              containerPort: 443
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
